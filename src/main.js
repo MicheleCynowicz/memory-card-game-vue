@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-import "./assets/main.css";
+import "../static_site/style.css";
 
 new Vue({
   render: (h) => h(App),

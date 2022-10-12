@@ -3,10 +3,10 @@ import CardView from "./CardView.vue";
 </script>
 
 <template>
-  <div>
-    <p>I am the CardWrapper.vue component</p>
-    <CardView />
-  </div>
+  <li class="card">
+    <CardView viewType="front" />
+    <CardView viewType="back" />
+  </li>
 </template>
 
 <style scoped>

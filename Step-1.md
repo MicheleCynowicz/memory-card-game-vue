@@ -28,7 +28,7 @@ You will see these child components used inside the `<template>` tag as if they 
 <TheWelcome />
 ```
 
-Notice the syntax here, the SFC filenames and the HTML tags that represent them are using *Pascal Casing* - each individual word in the name starts with a captial letter, and there are no spaces. This is a standard syntax styling for JavaScript frameworks that help you visually recognize what is a _child component instance_ rather than a standard HTML tag.
+Notice the syntax here! The SFC filenames and the HTML tags that represent them are using *Pascal Casing* - each individual word in the name starts with a captial letter, and there are no spaces. This is a standard syntax styling for JavaScript frameworks that help you visually recognize what is a _child component instance_ rather than a standard HTML tag.
 
 Look at the _component instance_ of `HelloWorld`:
 ```html
@@ -47,7 +47,7 @@ defineProps({
 });
 </script>
 ```
-Not here that `msg` is a property of an object that is being passed as the argument to a `defineProps()` function, and that its value is an object:
+Note here that `msg` is a property of an object that is being passed as the argument to a `defineProps()` function, and that its value is an object:
 ```js
 msg: {
   type: String,
@@ -61,7 +61,8 @@ In your `App.vue` file, change the value of the `msg` prop inside the `<HelloWor
 <HelloWorld msg="I am learning Vue!" />
 ```
 Save this change and preview the app now in your browser.
-Thanks to _Hot Module Reloading_ (HMR), the change is instant in the browser once it is saved. You should now see your app's `<h1>` tag as reading *I am learning Vue!*.
+Thanks to _Hot Module Reloading_ (HMR), the change is instant in the browser once it is saved. You don't need to reload the page!
+You should now see your app's `<h1>` tag as reading *I am learning Vue!*.
 
 Look around in the code within the `src` directory. You will see that there are more, smaller SFCs in the file tree. Look at how different SFCs are being called by _parent components_, and use your browser's dev tools to inspect the HTML of the running app to see how the HTML structure has been output by compiling all these smaller components together.
 

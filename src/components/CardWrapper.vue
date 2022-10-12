@@ -1,5 +1,11 @@
-<script setup>
+<script>
 import CardView from "./CardView.vue";
+
+export default {
+  components: {
+    CardView,
+  },
+};
 </script>
 
 <template>
@@ -8,6 +14,3 @@ import CardView from "./CardView.vue";
     <CardView viewType="back" />
   </li>
 </template>
-
-<style scoped>
-</style>

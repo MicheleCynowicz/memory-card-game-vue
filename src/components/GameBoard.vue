@@ -1,5 +1,11 @@
-<script setup>
+<script>
 import CardWrapper from "./CardWrapper.vue";
+
+export default {
+  components: {
+    CardWrapper,
+  },
+};
 </script>
 
 <template>
@@ -10,6 +16,3 @@ import CardWrapper from "./CardWrapper.vue";
     </ul>
   </div>
 </template>
-
-<style scoped>
-</style>

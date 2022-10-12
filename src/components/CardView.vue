@@ -20,6 +20,3 @@ export default {
     <img src="images/que_icon.svg" alt="icon" />
   </div>
 </template>
-
-<style scoped>
-</style>

@@ -16,14 +16,13 @@ In your `src/components` directory, create three new SFC files: `GameBoard.vue`,
 
 In each of your 3 new files, add the following code:
 ```html
-<script setup>
+<script>
+  export default {};
 </script>
 
 <template>
 </template>
 
-<style scoped>
-</style>
 ```
 
 Within each `<template></template>` tag in each of the 3 files, add a `<p>` tag to name the current component, such as:
@@ -36,12 +35,12 @@ This way you will be able to see how they are output by the compiler once they e
 
 In order to see these components in the browser, they need to be called upon within the app.
 
-In your `App.vue` file, within the `<script setup> ... </script>` tag, remove the 2 component import statements and add:
+In your `App.vue` file, within the `<script setup> ... </script>` tag, remove the 2 default component import statements and add:
 ```js
 import GameBoard from "./components/GameBoard.vue";
 ```
 
-Next, inside of `App.vue`: remove the `<header></header>` tag and all of its contents. Change the content of the `<main></main>` tag to a component instance of the game board, like this:
+Next, inside of `App.vue`, remove the `<header></header>` tag and all of its contents. Change the content of the `<main></main>` tag to a component instance of the game board, like this:
 ```html
 <main>
   <GameBoard />
@@ -61,13 +60,27 @@ The whole `<template>` tag in your `App.vue` file should look like this:
 
 Now look at the app as it is running at localhost (if it is not running, you will need to use the terminal command `npm run dev` to start it). The only content you should see on the screen now is the `<p>` tag from inside of your `GameBoard.vue` component, such as *I am the GameBoard.vue component*.
 
-Inside of the `GameBoard.vue` component, add an `import` statement to the `<script setup>` tag to import the `CardWrapper.vue` component, like this:
+Inside of the `GameBoard.vue` component, add an `import` statement to the `<script>` tag to import the `CardWrapper.vue` component, above the `export default {};` line like this:
 ```html
-<script setup>
+<script>
 import CardWrapper from "./CardWrapper.vue";
+
+export default {};
 </script>
 ```
-Next you'll call an instance of the `CardWrapper` component inside the `<template>` tag, below your `<p>` tag, using the component instance syntax `<CardWrapper />`. Your `GameBoard.vue` file's `<template>` tag should now look something like this:
+Within the `export default {};` object, add a `components: {},` property, and call the `CardWrapper` component within the `components` object, like this:
+```js
+export default {
+  components: {
+    CardWrapper,
+  },
+};
+```
+This is how you register the child component `CardWrapper` inside the parent component, `GameBoard`.
+
+Next you'll call an instance of the `CardWrapper` component inside the `<template>` tag, below your `<p>` tag, using the component instance syntax `<CardWrapper />`.
+
+Your `GameBoard.vue` file's `<template>` tag should now look something like this:
 ```html
 <template>
   <p>I am the GameBoard.vue component</p>
@@ -91,8 +104,14 @@ Next, follow the same steps to add the `CardView` component to the `CardWrapper`
 
 The `<script>` and `<template>` tags inside your `CardWrapper` component should look like this:
 ```html
-<script setup>
+<script>
 import CardView from "./CardView.vue";
+
+export default {
+  components: {
+    CardView,
+  },
+};
 </script>
 
 <template>
@@ -117,7 +136,7 @@ Now you want to make the HTML render in a way that looks like the HTML from your
 ```
 This doesn't change much in the app when viewed in the browser, but upon inspecting the page with dev tools, you will see the added class name `game-board` and the added `<ul class="cards">` tag.
 
-Speaking of what you see in the browser, you've got some lingering styles from the boilerplate of the VueJS setup, so go into your `App.vue` component and remove everything from within the `<style scoped> ... </style>` tag. Once you save this and look at it in the browser, there are still boilerplate styles present. Where do they come from?
+Speaking of what you see in the browser, you've got some lingering styles from the boilerplate of the VueJS setup, so go into your `App.vue` component and remove the entire `<style scoped> ... </style>` tag. Once you save this and look at it in the browser, there are still boilerplate styles present. *Where do they come from?*
 
 Open the file `main.js` from the `src` directory. At line 4 you should see:
 ```js

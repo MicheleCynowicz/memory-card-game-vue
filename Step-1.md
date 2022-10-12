@@ -47,7 +47,7 @@ defineProps({
 });
 </script>
 ```
-Not here that `msg` is a property of an object that is being passed as the argument to a `defineProps()` function, and that its value is an object:
+Note here that `msg` is a property of an object that is being passed as the argument to a `defineProps()` function, and that its value is an object:
 ```js
 msg: {
   type: String,

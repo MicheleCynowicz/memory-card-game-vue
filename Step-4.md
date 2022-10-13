@@ -56,35 +56,33 @@ This data needs to be used in the `GameBoard` component, so open the `GameBoard.
 import CardView from "./CardView.vue";
 import cardData from "../data/memoryCards8.js";
 ```
-Just below the import statements, within the `export default {...}` object, add a property *after* the `components` object, called `computed`. That should look like this:
+Just below the import statements, within the `export default {...}` object, add a property *after* the `components` object, called `data() {}`. That should look like this:
 ```js
 export default {
   components: {
     CardView,
   },
-  computed: {
+  data() {
 
   },
 };
 ```
-Inside the `computed` object, VueJS will expect a specific method type that will `return` reactive values.
-Within the `computed: {}` object, add a *computed property* called `cardsData`:
+Inside the `data()` object, VueJS will expect a `return` object with reactive property names and values that can be used and manipulated while the app is in use. This `return` object acts as a container for what could be equivalent to a _global variable_ (as you have seen in `static_site/script.js`), with the exception that these variables are _scoped_ to the current component.
+Add this `data() {}` and let it return a variable `cardsData`:
 ```js
-computed: {
-  cardsData() {}
-},
+export default {
+  components: {
+    CardView,
+  },
+  data() {
+    return {
+      cardsData: cardData,
+    };
+  },
 ```
-Look at the syntax of `cardsData() {}` - this is following function definition syntax, without the `function` keyword. VueJS will treat `computed` properties as functions, but will run those functions at key points within the *component lifecycle*. The value that is _returned_ by a computed property can be used as a variable indside other code inside the given component.
+All this is meant to do right now is pass the `cardData` array from the `import` statement at the top of the file to a variable `cardsData`. Note the subtle difference in the names: `cardData` vs. `cardsData`.
 
-All that is to say that if you add a `return` value to `cardsData() {}`, then that value is carried by the variable `cardsData`. See this in action by adding a return statement to the computed property:
-```js
-computed: {
-  cardsData() {
-    return cardData;
-  }
-},
-```
-and then find the `<p>` tag in `GameBoard.vue` and change it to output the `cardsData` variable, like this:
+Find the `<p>` tag in `GameBoard.vue` and change it to output the `cardsData` variable, like this:
 ```html
 <p>{{ cardsData }}</p>
 ```
@@ -104,13 +102,13 @@ To read this in plain language, this `v-for` syntax states:
 
 Save this change and look at it in the browser. You should now have 8 `<li>` tags, each containing 2 `<div>` tags. *Wait!* There are only 8, but you need 16!
 
-In the `computed` object of the `GameBoard.vue` component, use the JavaScript array method `.concat()` to add a second copy of the `cardData` array to the output of the `cardsData` computed property, like this:
+In the `data() { return {} }` object of the `GameBoard.vue` component, use the JavaScript array method `.concat()` to add a _second copy_ of the `cardData` array to the output of the `cardsData` data property, like this:
 ```js
-computed: {
-  cardsData() {
-    return cardData.concat(cardData);
+data() {
+    return {
+      cardsData: cardData.concat(cardData),
+    };
   },
-},
 ```
 Save this and check your app in the browser. You should now see 16 cards!
 However, upon inspecting the game board with your browser dev tools, it seems all the back-view card divs have the same image.
@@ -151,10 +149,10 @@ export default {
   components: {
     CardView,
   },
-  computed: {
-    cardsData() {
-      return cardData.concat(cardData);
-    },
+  data() {
+    return {
+      cardsData: cardData.concat(cardData),
+    };
   },
 };
 </script>

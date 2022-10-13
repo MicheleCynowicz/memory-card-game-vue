@@ -9,6 +9,3 @@ import GameBoard from "./components/GameBoard.vue";
     </main>
   </div>
 </template>
-
-<style scoped>
-</style>

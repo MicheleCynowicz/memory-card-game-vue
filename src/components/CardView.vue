@@ -5,10 +5,13 @@ export default {
       type: String,
       required: true,
     },
-  },
-  computed: {
-    somthing() {
-      return "value";
+    imageUrl: {
+      type: String,
+      default: `../static_site/images/que_icon.svg`,
+    },
+    imageAltText: {
+      type: String,
+      default: `hidden card`,
     },
   },
 };
@@ -16,7 +19,6 @@ export default {
 
 <template>
   <div :class="`view ${viewType}-view`">
-    <p>{{ somthing }}</p>
-    <img src="images/que_icon.svg" alt="icon" />
+    <img :src="imageUrl" :alt="imageAltText" />
   </div>
 </template>

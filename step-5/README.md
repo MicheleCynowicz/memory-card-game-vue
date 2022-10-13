@@ -155,4 +155,4 @@ Save this work and test the app in the browser. You should be able to _flip_ two
 
 Before moving on to the next step, see if you can copy the `matchCards` function from your original `script.js` file, and apply it in the `methods: {...}` object in your `GameBoard.vue` component. Remember that any variable or function that is defined inside the component must be referenced with the `this.` prefix.
 
-When you are ready, go on to [Step 6]().
+When you are ready, go on to [Step 6](/step-6).

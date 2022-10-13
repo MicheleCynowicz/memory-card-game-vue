@@ -176,4 +176,4 @@ export default {
 In the browser, the app should display 16 _cards_, and the `back-view` of these cards should have the correct image file paths with matching alt text.
 To get a visual for how this is working, add the `flip` class to the `<li>` tag in the `GameBoard.vue` component, and preview it in the browser. You should now see 8 pairs of matching images on the 16 cards.
 
-Remove the `flip` class and save your work before moving on to [Step 5]().
+Remove the `flip` class and save your work before moving on to [Step 5](/step-5).

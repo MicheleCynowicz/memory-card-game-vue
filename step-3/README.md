@@ -211,4 +211,4 @@ The markup you see should mimic this block of HTML:
 </main>
 ```
 
-If this is what you're seeing render in the browser, then you're ready to move on to [Step 4]().
+If this is what you're seeing render in the browser, then you're ready to move on to [Step 4](/step-4).

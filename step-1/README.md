@@ -75,4 +75,4 @@ In your computer's file browser, find your most up-to-date copy of your Memory C
 
 Save and commit all your changes.
 
-Now create a new working branch in your vue project to use in [Step 2]().
+Now create a new working branch in your vue project to use in [Step 2](/step-2).

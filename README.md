@@ -55,4 +55,4 @@ You do not need to run `npm run dev` yet. This command will start your project r
 
 Publish this new project as a git repository on GitHub (in VS Code you can do this via the Source Control panel).
 
-Move on to [Step 1]().
+Move on to [Step 1](/step-1).

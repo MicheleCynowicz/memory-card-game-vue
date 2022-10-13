@@ -49,11 +49,9 @@ Next, inside of `App.vue`, remove the `<header></header>` tag and all of its con
 The whole `<template>` tag in your `App.vue` file should look like this:
 ```html
 <template>
-  <div id="app">
-    <main>
-      <GameBoard />
-    </main>
-  </div>
+  <main>
+    <GameBoard />
+  </main>
 </template>
 ```
 

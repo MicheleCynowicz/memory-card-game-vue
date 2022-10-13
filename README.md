@@ -40,13 +40,21 @@ To get started in this project, you need to have completed the original Memory C
 In a terminal window, `cd` (change directory) to the parent directory of your new project. Run the command `npm init vue@2`. Follow the CLI prompts to setup a Vue project, with these settings:
 
 ✔ Project name: `memory-card-game-vue`
+
 ✔ Add TypeScript? `No`
+
 ✔ Add JSX Support? `No`
+
 ✔ Add Vue Router for Single Page Application development? `No`
+
 ✔ Add Pinia for state management? `No`
+
 ✔ Add Vitest for Unit Testing? `No`
+
 ✔ Add Cypress for both Unit and End-to-End testing? `No`
+
 ✔ Add ESLint for code quality? `Yes`
+
 ✔ Add Prettier for code formatting? `Yes`
 
 Follow the prompts provided by the CLI to `cd` into the project directory, run an `npm install`, then an `npm lint`.

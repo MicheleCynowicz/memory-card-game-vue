@@ -1,7 +1,6 @@
 <script>
 import CardView from "./CardView.vue";
 import cardData from "../data/memoryCards8.js";
-// import gameFunctions from "../assets/gameScript.js";
 
 export default {
   components: {
@@ -44,7 +43,7 @@ export default {
         // each of the cardOne and cardTwo variables currently represent a whole HTML element with childNodes
         let cardOneImg = this.cardOne.querySelector(".back-view img").src; // query the elements inside cardOne to get the value of the img src, such as `img-2.png`, and set that as the value of cardOneImg
         let cardTwoImg = this.cardTwo.querySelector(".back-view img").src; // query the elements inside cardOne to get the value of the img src, such as `img-2.png`, and set that as the value of cardTwoImg
-        matchCards(cardOneImg, cardTwoImg); // now check the images by filename to see if they are a match!
+        this.matchCards(cardOneImg, cardTwoImg); // now check the images by filename to see if they are a match!
       }
     },
   },

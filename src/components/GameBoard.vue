@@ -1,18 +1,30 @@
 <script>
-import CardWrapper from "./CardWrapper.vue";
+import CardView from "./CardView.vue";
+import cardData from "../data/memoryCards8.js";
 
 export default {
   components: {
-    CardWrapper,
+    CardView,
+  },
+  computed: {
+    cardsData() {
+      return cardData.concat(cardData);
+    },
   },
 };
 </script>
 
 <template>
   <div class="game-board">
-    <p>I am the GameBoard.vue component</p>
     <ul class="cards">
-      <CardWrapper />
+      <li v-for="(cardInfo, index) in cardsData" :key="index" class="card">
+        <CardView viewType="front" />
+        <CardView
+          viewType="back"
+          :imageUrl="cardInfo.url"
+          :imageAltText="cardInfo.altText"
+        />
+      </li>
     </ul>
   </div>
 </template>

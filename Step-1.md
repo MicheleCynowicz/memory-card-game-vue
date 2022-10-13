@@ -34,7 +34,9 @@ Look at the _component instance_ of `HelloWorld`:
 ```html
 <HelloWorld msg="You did it!" />
 ```
-This has an _attribute_ of `msg="You did it!"`. The attribute `msg` here is not an HTML attribute, but an attribute that is specific to the `HelloWorld.vue` SFC. We call these *props*. `msg` is a variable property that can be read inside of the `HelloWorld.vue` component. If you look at your app running in the browser (at localhost) you will see the `<h1>` tag that reads *You did it!*.
+This has an _attribute_ of `msg="You did it!"`. The attribute `msg` here is not an HTML attribute, but an attribute that is specific to the `HelloWorld.vue` SFC. We call these *props*.
+
+`msg` is a variable property that can be read inside of the `HelloWorld.vue` component. If you look at your app running in the browser (at localhost) you will see the `<h1>` tag that reads *You did it!*.
 
 Open up the `HelloWorld.vue` file in your code editor. At the top of this file you will see a `script` tag:
 ```html
@@ -62,6 +64,7 @@ In your `App.vue` file, change the value of the `msg` prop inside the `<HelloWor
 ```
 Save this change and preview the app now in your browser.
 Thanks to _Hot Module Reloading_ (HMR), the change is instant in the browser once it is saved. You don't need to reload the page!
+
 You should now see your app's `<h1>` tag as reading *I am learning Vue!*.
 
 Look around in the code within the `src` directory. You will see that there are more, smaller SFCs in the file tree. Look at how different SFCs are being called by _parent components_, and use your browser's dev tools to inspect the HTML of the running app to see how the HTML structure has been output by compiling all these smaller components together.

@@ -10,22 +10,19 @@ In your original `index.html` file, you have 16 `<li>` tags that look like this:
   </div>
 </li>
 ```
-Since the `CardWrapper` component will present our `<li class="card">` tags in our Vue version of the game, and our `CardView` component will present the `<div class="view">` tags, open the `CardWrapper.vue` component file and change the contents of the `<template>` tag to this:
+Since the `GameBoard` component will present our `<li class="card">` tags in our Vue version of the game, and our `CardView` component will present the `<div class="view">` tags, you will need two instances of the `<CardView />` component. Add a second instance of `<CardView />` inside the `GameBoard.vue` file like this:
 ```html
-<template>
-  <li class="card">
-    <p>I am the CardWrapper.vue component</p>
-    <CardView />
-    <CardView />
-  </li>
-</template>
+<div class="game-board">
+    <p>I am the GameBoard.vue component</p>
+    <ul class="cards">
+      <li class="card">
+        <CardView />
+        <CardView />
+      </li>
+    </ul>
+  </div>
 ```
-Note that within this `<template>` tag we are no longer using a `<div>` element to wrap the contents inside - it has been replaced with the `<li class="card"> ... </li>` tag. Any valid HTML tag that is NOT a `template` should be a valid root element here. We don't want this to be a `<div>` anymore because we don't want our `<li>` tags to be wrapped inside of empty `<div>`s, as that would affect the HTML output of our `<li>` tags overall.
 
-Now that you can see the `<li class="card">` rendering in the browser, remove this line from the component:
-```html
-<p>I am the CardWrapper.vue component</p>
-```
 In the browser you should now see the text *I am the GameBoard.vue component* once, and *I am the CardView.vue component* twice.
 
 Why is it there twice? Because we will only be rendering ONE `<div class="view">` per component instance of `<CardView />`, but we need to have two card views; one for the back view, and one for the front.
@@ -63,17 +60,22 @@ Here we are telling the Vue compiler that whenever the `CardView.vue` component 
 [Vue warn]: Missing required prop: "viewType" found in
 ---> <CardView> at...
 ```
-This error should have shown twice in your console (or have the number `2` next to the error) because inside the `CardWrapper.vue` component, you are calling `<CardView />` twice, and neither instance is passing along a `viewType` prop.
+This error should have shown twice in your console (or have the number `2` next to the error) because inside the `GameBoard.vue` component, you are calling `<CardView />` twice, and neither instance is passing along a `viewType` prop.
 
-To fix this, open your `CardWrapper.vue` file and add the `viewType` prop to each of the `<CardView />` component instances. Give the first instance a `viewType` value of `front` and the second instance a `viewType` value of `back`.
+To fix this, open your `GameBoard.vue` file and add the `viewType` prop to each of the `<CardView />` component instances. Give the first instance a `viewType` value of `front` and the second instance a `viewType` value of `back`.
 
-If you did this correctly, the `<template>` code in your `CardWrapper.vue` file should look like this:
+If you did this correctly, the `<template>` code in your `GameBoard.vue` file should look like this:
 ```html
 <template>
-  <li class="card">
-    <CardView viewType="front" />
-    <CardView viewType="back" />
-  </li>
+  <div class="game-board">
+    <p>I am the GameBoard.vue component</p>
+    <ul class="cards">
+      <li class="card">
+        <CardView viewType="front" />
+        <CardView viewType="back" />
+      </li>
+    </ul>
+  </div>
 </template>
 ```
 Save this change and check your app in the browser. You won't see the `[Vue warn]` error message anymore.
@@ -91,7 +93,7 @@ Change that to:
 *What did that just do?*
 When we add a colon `:` before the `class` attribute, we are *binding* the attribute to Vue. It's a shorthand for `v-bind:class`. With the binding in place, everything between the quotation marks in `:class="..."` will be evaluated as _JavaScript_! Thus inside the quotation marks we add backticks so that we have the option of *string interpolation*, and we can use the `viewType` prop as a *variable* within the string.
 
-Save this change and view the app in your browser. Use the dev tools inspector to see the two `<div>`s that are compiled from the two component instances of `<CardView viewType="">` you will see that the first `<div>` has a class attribute of `"view front-view"` and the second `<div>` has a class attribute of `"view back-view"`.
+Save this change and view the app in your browser. Use the dev tools inspector to see the two `<div>`s that are compiled from the two component instances of `<CardView viewType="">`. You will see that the first `<div>` has a class attribute of `"view front-view"` and the second `<div>` has a class attribute of `"view back-view"`.
 
 Now that the classes for the divs are setup, you will need to address the variation of the `<img>` tag.
 
@@ -111,13 +113,12 @@ In your `CardView.vue` component, your `<img>` tag is currently:
 ```html
 <img src="images/que_icon.svg" alt="icon" />
 ```
-
 Change that tag to this:
 ```html
 <img :src="imageUrl" :alt="imageAltText" />
 ```
 
-Save the file and check the app in the browser with the dev tools console open. You should see 4 errors that begin with `[Vue warn]`. There is one error for each of the two variables we just added: `imageUrl` and `imageAltText`, and that is doubled because the `CardView` component is called twice inside the `CardWrapper` component.
+Save the file and check the app in the browser with the dev tools console open. You should see 4 errors that begin with `[Vue warn]`. There is one error for each of the two variables we just added: `imageUrl` and `imageAltText`, and that is doubled because the `CardView` component is called twice inside the `GameBoard` component.
 
 Now add those new variables into the `props` object in `CardView.vue` like this:
 ```js
@@ -137,11 +138,11 @@ props: {
 },
 ```
 
-Note that these new props are not `required: true`! When you have a `default` value here, calling this component inside another without specifying a value for either of these props:
+Note that these new props are not `required: true`! When you do not require a prop, you must have a `default` value instead. Calling this component inside another without specifying a value for either of these props (like this):
 ```html
 <CardView viewType="back" /> 
 ```
-means that the component instance will render, but since it doesn't have values for these unrequired props from the parent component, it will fill in the prop values with their defaults:
+means that the component instance will render, but since it doesn't have values for these unrequired props from the parent component, it will fill in the prop values with their defaults, and you will see the `<img>` tag render in the browser like this:
 ```html
 <img src="../static_site/images/que_icon.svg" alt="hidden card" />
 ```
@@ -176,7 +177,7 @@ export default {
 
 Save your work and inspect it in the browser dev tools. Now both instances of `<CardView />` are rendering with the default values for `imageUrl` and `imageAltText`.
 
-In the `CardWrapper.vue` file, change this line of code:
+In the `GameBoard.vue` file, change this line of code:
 ```html
 <CardView viewType="back" />
 ```
@@ -199,10 +200,10 @@ The markup you see should mimic this block of HTML:
     <ul class="cards">
       <li class="card">
         <div class="view front-view">
-          <img src="images/que_icon.svg" alt="hidden card">
+          <img src="../static_site/images/que_icon.svg" alt="hidden card">
         </div>
         <div class="view back-view">
-          <img src="images/img-1.png" alt="An emerald cut into a diamond shape.">
+          <img src="../static_site/images/img-1.png" alt="An emerald cut into a diamond shape.">
         </div>
       </li>
     </ul>

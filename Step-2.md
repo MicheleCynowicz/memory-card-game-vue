@@ -5,16 +5,15 @@ There's a LOT of repetitive code in that `index.html` file. In programming we us
 
 Once we have small, separate components, the compiler can build our game board for us, by stacking components as if they were LEGO bricks.
 
-Now you'll create some single file components (SFCs, or `.vue` files) to represent each part of the game, based on this breakdown:
+Now you'll create two single file components (SFCs, or `.vue` files) to represent parts of the game's original markup, based on this breakdown:
 - card view (back or front, to represent the `<div>` tags inside each `<li>`)
-- card wrapper (as in the `<li class="card">` tags)
-- game board
+- game board to hold the cards markup (as in the `<li class="card">` tags)
 
-In your `src/components` directory, create three new SFC files: `GameBoard.vue`, `CardWrapper.vue`, `CardView.vue`.
+In your `src/components` directory, create two new SFC files: `GameBoard.vue`, and  `CardView.vue`.
 
-*NOTE* that the name `CardWrapper.vue` is a tad wordy, we might have preferred to call this simply `Card.vue`. However, Vue's styleguide and linting recommendations dictate that component names that are not `App.vue` should always be multi-word names. If you tried to name the file `Card.vue`, you might see a syntax error in your code editor because the filename is too short.
+*NOTE* that the name `CardView.vue` is a tad wordy, we might have preferred to call this simply `Card.vue`. However, Vue's styleguide and linting recommendations dictate that component names that are not `App.vue` should always be multi-word names. If you tried to name the file `Card.vue`, you might see a syntax error in your code editor because the filename is too short.
 
-In each of your 3 new files, add the following code:
+In each of your 2 new files, add the following code:
 ```html
 <script>
   export default {};
@@ -25,10 +24,10 @@ In each of your 3 new files, add the following code:
 
 ```
 
-Within each `<template></template>` tag in each of the 3 files, add a `<p>` tag to name the current component, such as:
+Within each `<template></template>` tag in each file, add a `<p>` tag to name the current component, such as:
 ```html
 <template>
-  <p>I am the CardWrapper.vue component</p>
+  <p>I am the GameBoard.vue component</p>
 </template>
 ```
 This way you will be able to see how they are output by the compiler once they each are being called by a component instance within the app.
@@ -60,31 +59,31 @@ The whole `<template>` tag in your `App.vue` file should look like this:
 
 Now look at the app as it is running at localhost (if it is not running, you will need to use the terminal command `npm run dev` to start it). The only content you should see on the screen now is the `<p>` tag from inside of your `GameBoard.vue` component, such as *I am the GameBoard.vue component*.
 
-Inside of the `GameBoard.vue` component, add an `import` statement to the `<script>` tag to import the `CardWrapper.vue` component, above the `export default {};` line like this:
+Inside of the `GameBoard.vue` component, add an `import` statement to the `<script>` tag to import the `CardView.vue` component, above the `export default {};` line like this:
 ```html
 <script>
-import CardWrapper from "./CardWrapper.vue";
+import CardView from "./CardView.vue";
 
 export default {};
 </script>
 ```
-Within the `export default {};` object, add a `components: {},` property, and call the `CardWrapper` component within the `components` object, like this:
+Within the `export default {};` object, add a `components: {},` property, and call the `CardView` component within the `components` object, like this:
 ```js
 export default {
   components: {
-    CardWrapper,
+    CardView,
   },
 };
 ```
-This is how you register the child component `CardWrapper` inside the parent component, `GameBoard`.
+This is how you register the child component `CardView` inside the parent component, `GameBoard`.
 
-Next you'll call an instance of the `CardWrapper` component inside the `<template>` tag, below your `<p>` tag, using the component instance syntax `<CardWrapper />`.
+Next you'll call an instance of the `CardView` component inside the `<template>` tag, below your `<p>` tag, using the component instance syntax `<CardView />`.
 
 Your `GameBoard.vue` file's `<template>` tag should now look something like this:
 ```html
 <template>
   <p>I am the GameBoard.vue component</p>
-  <CardWrapper />
+  <CardView />
 </template>
 ```
 *Oh Noes! A syntax error!* Due to the way in which VueJS 2.0 compiles components, it requires that there is only _one single HTML element in the template root_. The `<template>` tag will not actually render in the compiled code, so VueJS 2.0 is looking for all the content within the `<template>` tag to be wrapped in a tag that _will_ render. (This has been changed in VueJS 3.0)
@@ -94,49 +93,28 @@ Update the `<template>` tag code in your `GameBoard.vue` file to include a `<div
 <template>
   <div>
     <p>I am the GameBoard.vue component</p>
-    <CardWrapper />
-  </div>
-</template>
-```
-When you look at this in your browser at localhost, you should now see the text *I am the GameBoard.vue component* followed by *I am the CardWrapper.vue component*.
-
-Next, follow the same steps to add the `CardView` component to the `CardWrapper` component.
-
-The `<script>` and `<template>` tags inside your `CardWrapper` component should look like this:
-```html
-<script>
-import CardView from "./CardView.vue";
-
-export default {
-  components: {
-    CardView,
-  },
-};
-</script>
-
-<template>
-  <div>
-    <p>I am the CardWrapper.vue component</p>
     <CardView />
   </div>
 </template>
 ```
-When you look at this in your browser, you should see that all 3 components are rendering. If you inspect the page with your browser's dev tools, you will see the way Vue has generated the HTML based on which component was called inside the other.
+When you look at this in your browser at localhost, you should now see the text *I am the GameBoard.vue component* followed by *I am the CardView.vue component*.
 
-Now you want to make the HTML render in a way that looks like the HTML from your original Memory Game project's `index.html`. This means you need to add the `game-board` class to the `<div>` tag in your `GameBoard.vue` component, and wrap a `<ul class="cards">` tag around the `<CardWrapper />` component instance:
+Now you want to make the HTML render in a way that looks like the HTML from your original Memory Game project's `index.html`. This means you need to add the `game-board` class to the `<div>` tag in your `GameBoard.vue` component, and wrap `<ul class="cards">` and `<li class="card">` tags around the `<CardView />` component instance:
 ```html
 <template>
   <div class="game-board">
     <p>I am the GameBoard.vue component</p>
     <ul class="cards">
-      <CardWrapper />
+      <li class="card">
+        <CardView />
+      </li>
     </ul>
   </div>
 </template>
 ```
-This doesn't change much in the app when viewed in the browser, but upon inspecting the page with dev tools, you will see the added class name `game-board` and the added `<ul class="cards">` tag.
+This doesn't change much in the app when viewed in the browser, but upon inspecting the page with dev tools, you will see the added class name `game-board` and the added `<ul class="cards">` and `<li class="card">` tags.
 
-Speaking of what you see in the browser, you've got some lingering styles from the boilerplate of the VueJS setup, so go into your `App.vue` component and remove the entire `<style scoped> ... </style>` tag. Once you save this and look at it in the browser, there are still boilerplate styles present. *Where do they come from?*
+Speaking of what you see in the browser, you've got some lingering styles from the boilerplate of the VueJS setup, so go into your `App.vue` component and remove the entire `<style scoped> ... </style>` tag. Once you save this and look at it in the browser, there are still boilerplate styles present! *Where do they come from?*
 
 Open the file `main.js` from the `src` directory. At line 4 you should see:
 ```js

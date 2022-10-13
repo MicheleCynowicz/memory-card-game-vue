@@ -3,9 +3,7 @@ import GameBoard from "./components/GameBoard.vue";
 </script>
 
 <template>
-  <div id="app">
-    <main>
-      <GameBoard />
-    </main>
-  </div>
+  <main>
+    <GameBoard />
+  </main>
 </template>

@@ -56,6 +56,7 @@ export default {
           console.log(`YOU WIN!`);
           return; // for now, lets call this game over, end this function and do nothing else.
         }
+
         // everything below will execute if the game has not yet been won...
         this.cardOne.classList.add("matched"); // add a class "matched" so that the flipCard function will not run when these are clicked
         this.cardTwo.classList.add("matched"); // add a class "matched" so that the flipCard function will not run when these are clicked
@@ -64,6 +65,7 @@ export default {
         this.disableDeck = false;
         return; // end function
       }
+
       setTimeout(() => {
         this.cardOne.classList.add("shake");
         this.cardTwo.classList.add("shake");

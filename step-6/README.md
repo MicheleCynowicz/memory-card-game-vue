@@ -118,3 +118,5 @@ matchCards(img1, img2) {
 Test your game until you've successfully matched all 8 pairs. If you see the message `YOU WIN!` in the console, you've successfully rebuilt your game in Vue!
 
 If you added any game features in your original `static_site` version, try to convert those features to Vue now too!
+
+In the [last step](/build-and-deploy), you'll deploy your app on GitHub pages.

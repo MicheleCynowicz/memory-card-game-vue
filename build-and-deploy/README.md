@@ -9,7 +9,7 @@
 
 5. In `memoryCards8.js` use find-and-replace to replace all instances of `../static_site/images` with `./images`
 
->*Optional:* if your custom game features added any image assets in other directories besides `images`, they also need to be moved to the `public` directory and their references in the code will need to be updated. For any extra script or style files, they will need to be moved into the `src` directory, and their references in the code updated as well.
+>*Optional:* if your custom game features added any image assets in other directories besides `images`, they also need to be moved to the `public` directory and their references in the code will need to be updated. For any extra script or style files, they will need to be copied into the `src` directory, and their references in the code updated as well.
 
 6. In your `vite.config.js` file, in the `export default defineConfig({ ... })` object, add the line `base: "",` as the first line inside the object, like this:
 ```js

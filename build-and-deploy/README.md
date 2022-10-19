@@ -79,4 +79,4 @@ git subtree push --prefix dist origin gh-pages
 
 If you need to make any changes to your project after all this, make them in a fresh working branch that you will commit, and push to the remote repository (and even `merge` to your `main` branch) normally.
 
-When you want to _*deploy*_ the project again, follow the steps 8-13 above.
+### When you want to _*deploy*_ the project again, follow the steps 8-13 above.

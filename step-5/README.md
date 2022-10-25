@@ -42,7 +42,7 @@ export default {
 };
 ```
 
-Inside the `methods: {}` object, rebuild the `shuffleCards()` function from your original `../static_site/script.js` file by first adding the _scoped data variable_ resets (similar to the [_global variable_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types#variable_scope) resets in the original code).
+Inside the `methods: {}` object, rebuild the `shuffleCards()` function from your original `../static_site/script.js` file by first adding the _scoped data variable_ resets (similar to the _global variable_ resets in the original code).
 In VueJS however, since we are referencing _scoped_ variables, we need to reference _this component, itself_ when referring to the variables.
 Use this code to start your `shuffleCards()` method:
 
@@ -82,7 +82,7 @@ shuffleCards() {
 },
 ```
 
-Wow! Your original `shuffleCards()` function from the `script.js` file was about 12 lines of code, and had a _time cost_ to compute and change DOM element values.
+Wow! Your original `shuffleCards()` function from the `script.js` file was about 12 lines of code, and had a [_time cost_](https://web.dev/why-speed-matters/#performance-is-about-user-experience) to compute and change DOM element values.
 Your VueJS version is 9 lines of code and will execute MUCH faster. (You may not notice the speed difference, since as we learned previously, JavaScript can be very FAST on its own)
 
 To see this in action, call the `shuffleCards()` method inside a [`mounted()` property](https://vuejs.org/api/options-lifecycle.html#mounted). `mounted()` is a [Vue Lifecycle Hook](https://vuejs.org/guide/essentials/lifecycle.html). It will only run whenever the current component (`GameBoard.vue`) mounts to the DOM. This is similar to a page refresh, except that it is a _component_ refresh.
@@ -154,7 +154,7 @@ Reformat this tag so that the attributes/props/directives all appear stacked:
 <li v-for="(cardInfo, index) in cardsData" :key="index" class="card"></li>
 ```
 
-Then add a _vue-bound click event handler_ on the line following the `class` attribute, like this:
+Then add a [_vue-bound click event handler_](https://v2.vuejs.org/v2/guide/events.html) on the line following the `class` attribute, like this:
 
 ```html
 <li

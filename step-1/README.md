@@ -6,10 +6,10 @@ In your code editor, open the `index.html` file. Update the `<title>` of your ga
 
 Note that the `body` of this file contains two HTML elements: a `div` with an `id="app"` and a `script` tag with a `src="/src/main.js`. You won't edit this code, but notice that the script tag's `src` leads to a directory also named `src`. Open up the `src` directory in your file browser and you will see some more boilerplate Vue code.
 
-Open the file `App.vue`. This is the top-level *Single File Component* (SFC, or a `.vue` file) of your new Vue app. When your project is running, `App.vue` will _mount_ to the DOM in your `index.html` file by attaching to `<div id="app"></div>`.
+Open the file `App.vue`. This is the top-level [Single File Component](https://vuejs.org/guide/scaling-up/sfc.html) (SFC, or a `.vue` file) of your new Vue app. When your project is running, `App.vue` will _[mount](https://vuejs.org/guide/essentials/application.html#mounting-the-app)_ to the DOM in your `index.html` file by attaching to `<div id="app"></div>`.
 
 Notice inside of `App.vue` that there are 3 top-level HTML elements:
-`<script setup>`, `<template>`, and `<style scoped>`. These 3 elements will work together within the SFC as if they were your standard `script.js`, `index.html`, and `style.css` files, only their content will be _scoped_ to the current component.
+`<script setup>`, `<template>`, and `<style scoped>`. These 3 elements will work together within the SFC as if they were your standard `script.js`, `index.html`, and `style.css` files, only their content will be [scoped](https://vuejs.org/api/sfc-css-features.html#scoped-css) to the current component.
 
 This means that the HTML that will render inside `<div id="app">` when the app is running is that which is seen inside the `<template>` tag within `App.vue`.
 
@@ -18,7 +18,7 @@ In the `<script>` tag of `App.vue`, you will see two file `import`s:
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 ```
-This is telling the Vue compiler that within this `App.vue` SFC, you want to use two _child components_, `HelloWorld.vue` and `TheWelcome.vue`, which are both found in the `components` directory in the project.
+This is telling the Vue compiler that within this `App.vue` SFC, you want to use two [child components](https://bambielli.com/til/2018-08-19-how-to-target-child-components-with-scoped-css-in-vue/), `HelloWorld.vue` and `TheWelcome.vue`, which are both found in the `components` directory in the project.
 
 You will see these child components used inside the `<template>` tag as if they were their own HTML element tags:
 ```html
@@ -28,7 +28,7 @@ You will see these child components used inside the `<template>` tag as if they 
 <TheWelcome />
 ```
 
-Notice the syntax here! The SFC filenames and the HTML tags that represent them are using *Pascal Casing* - each individual word in the name starts with a captial letter, and there are no spaces. This is a standard syntax styling for JavaScript frameworks that help you visually recognize what is a _child component instance_ rather than a standard HTML tag.
+Notice the syntax here! The SFC filenames and the HTML tags that represent them are using [Pascal Casing](https://www.theserverside.com/definition/Pascal-case) - each individual word in the name starts with a captial letter, and there are no spaces. This is a standard syntax styling for JavaScript frameworks that help you visually recognize what is a _child component instance_ rather than a standard HTML tag.
 
 Look at the _component instance_ of `HelloWorld`:
 ```html

@@ -1,9 +1,9 @@
 # Step 2: Breaking up the game
 When you created the memory card game in [the original assignment](https://github.com/MicheleCynowicz/memory-card-game), you started by creating an HTML file with an empty game board. Then you proceeded to add a `<ul>` tag with 16 `<li>` tags inside of it, to represent each card. Inside each `<li class="card">` you had 2 `<div>` tags to represent the front and the back of each card.
 
-There's a LOT of repetitive code in that `index.html` file. In programming we use the term DRY, which is an acronym for *Don't Repeat Yourself*. We will use individual Vue components to break apart the HTML from the `index.html` file, so that we can have less code hard-coded, and thus our app will adhere to the DRY principle.
+There's a LOT of repetitive code in that `index.html` file. In programming we use the term DRY, which is an acronym for [Don't Repeat Yourself](https://medium.com/0xcode/dry-dont-repeat-yourself-avoiding-redundancy-in-software-programming-e264ec97276e). We will use individual Vue components to break apart the HTML from the `index.html` file, so that we can have less code hard-coded, and thus our app will adhere to the DRY principle.
 
-Once we have small, separate components, the compiler can build our game board for us, by stacking components as if they were LEGO bricks.
+Once we have small, separate components, the [compiler](https://www.w3schools.in/what-is-compiler) can build our game board for us, by stacking components as if they were LEGO bricks.
 
 Now you'll create two single file components (SFCs, or `.vue` files) to represent parts of the game's original markup, based on this breakdown:
 - card view (back or front, to represent the `<div>` tags inside each `<li>`)

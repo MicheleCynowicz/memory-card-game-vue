@@ -34,7 +34,7 @@ Look at the _component instance_ of `HelloWorld`:
 ```html
 <HelloWorld msg="You did it!" />
 ```
-This has an _attribute_ of `msg="You did it!"`. The attribute `msg` here is not an HTML attribute, but an attribute that is specific to the `HelloWorld.vue` SFC. We call these *props*.
+This has an _attribute_ of `msg="You did it!"`. The attribute `msg` here is not an HTML attribute, but an attribute that is specific to the `HelloWorld.vue` SFC. We call these [props](https://www.freecodecamp.org/news/how-to-use-props-in-vuejs/).
 
 `msg` is a variable property that can be read inside of the `HelloWorld.vue` component. If you look at your app running in the browser (at localhost) you will see the `<h1>` tag that reads *You did it!*.
 

@@ -85,7 +85,7 @@ shuffleCards() {
 Wow! Your original `shuffleCards()` function from the `script.js` file was about 12 lines of code, and had a [_time cost_](https://web.dev/why-speed-matters/#performance-is-about-user-experience) to compute and change DOM element values.
 Your VueJS version is 9 lines of code and will execute MUCH faster. (You may not notice the speed difference, since as we learned previously, JavaScript can be very FAST on its own)
 
-To see this in action, call the `shuffleCards()` method inside a [`mounted()` property](https://vuejs.org/api/options-lifecycle.html#mounted). `mounted()` is a [Vue Lifecycle Hook](https://vuejs.org/guide/essentials/lifecycle.html). It will only run whenever the current component (`GameBoard.vue`) mounts to the DOM. This is similar to a page refresh, except that it is a _component_ refresh.
+To see this in action, call the `shuffleCards()` method inside a [`mounted()` property](https://www.digitalocean.com/community/tutorials/vuejs-component-lifecycle#understanding-mounting-hooks-dom-insertion). `mounted()` is a [Vue Lifecycle Hook](https://vuejs.org/guide/essentials/lifecycle.html). It will only run whenever the current component (`GameBoard.vue`) mounts to the DOM. This is similar to a page refresh, except that it is a _component_ refresh.
 
 Add this `mounted() {...}` code to your `export default {...}` object:
 

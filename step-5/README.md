@@ -145,13 +145,17 @@ Before you get to the `matchCards()` function, you will want to add the `flipCar
 In your `GameBoard.vue` component, find your `<li>` tag:
 
 ```html
-<li v-for="(cardInfo, index) in cardsData" :key="index" class="card"></li>
+<li v-for="(cardInfo, index) in cardsData" :key="index" class="card">
 ```
 
 Reformat this tag so that the attributes/props/directives all appear stacked:
 
 ```html
-<li v-for="(cardInfo, index) in cardsData" :key="index" class="card"></li>
+<li
+  v-for="(cardInfo, index) in cardsData"
+  :key="index"
+  class="card"
+>
 ```
 
 Then add a [_vue-bound click event handler_](https://v2.vuejs.org/v2/guide/events.html) on the line following the `class` attribute, like this:
@@ -162,11 +166,11 @@ Then add a [_vue-bound click event handler_](https://v2.vuejs.org/v2/guide/event
   :key="index"
   class="card"
   @click="flipCard"
-></li>
+>
 ```
 
 Save this work and test the app in the browser. You should be able to _flip_ two cards on the game board, and then the functions will halt. Now you will need to implement the `matchCards` function.
 
 Before moving on to the next step, see if you can copy the `matchCards` function from your original `script.js` file, and apply it in the `methods: {...}` object in your `GameBoard.vue` component. Remember that any variable or function that is defined inside the component must be referenced with the `this.` prefix.
 
-When you are ready, go on to [Step 6](/step-6).
+When you are ready, go on to [Step 6](../step-6/README.md).

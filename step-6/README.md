@@ -2,7 +2,7 @@
 
 You've come a long way!
 
-If you were able to get your `matchCards()` method working at the end of [Step 5]() on your own, then you should the `matchCards()` function code, with all the component variables and methods prefixed with `this.` in your `GameBoard.vue` component:
+If you were able to get your `matchCards()` method working at the end of [Step 5](../step-5/README.md) on your own, then you should the `matchCards()` function code, with all the component variables and methods prefixed with `this.` in your `GameBoard.vue` component:
 
 ```js
 matchCards(img1, img2) {
